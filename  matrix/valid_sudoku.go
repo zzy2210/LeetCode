@@ -1,5 +1,7 @@
 package matrix
 
+// 36. 有效的数独
+
 func isValidSudoku(board [][]byte) bool {
 	// 先计算行
 	// 再计算列
