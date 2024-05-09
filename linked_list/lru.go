@@ -3,16 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	test := Constructor(2)
-	test.Put(1, 1)
-	test.Put(2, 2)
-	fmt.Println(test.Get(1))
-	test.Put(3, 3)
+	test := Constructor(1)
+	test.Put(2, 1)
 	fmt.Println(test.Get(2))
-	test.Put(4, 4)
-	fmt.Println(test.Get(1))
+	test.Put(3, 2)
+	fmt.Println(test.Get(2))
 	fmt.Println(test.Get(3))
-	fmt.Println(test.Get(4))
 }
 
 type LRUCache struct {
@@ -31,7 +27,10 @@ type Node struct {
 
 // 初始化
 func Constructor(capacity int) LRUCache {
-	head := &Node{}
+	head := &Node{
+		key:   -1,
+		value: -1,
+	}
 	return LRUCache{
 		head:  head,
 		count: 0,
@@ -50,6 +49,9 @@ func (this *LRUCache) Get(key int) int {
 				node.next.prev = node.prev
 			}
 			node.prev.next = node.next
+			if this.tail == node {
+				this.tail = node.prev
+			}
 			// node 头插
 			node.next = this.head.next
 			node.prev = this.head
@@ -58,6 +60,11 @@ func (this *LRUCache) Get(key int) int {
 				this.head.next.prev = node
 			}
 			this.head.next = node
+			// 处理尾部
+			if node.next == nil {
+				this.tail = node
+			}
+
 			return node.value
 		}
 		node = node.next
