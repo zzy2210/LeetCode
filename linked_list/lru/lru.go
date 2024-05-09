@@ -6,6 +6,16 @@ import "fmt"
 面试题 16.25. LRU 缓存
 https://leetcode.cn/problems/OrIXps/description/
 链表法 很慢
+
+思路： 双向链表
+head，tail 两个执行分别指到头尾
+新的进来就头插，尾部的说明是最久远未用
+
+然后调用到的，就将它断出原链，重新插入
+超过容量就删末尾的
+
+就完事了
+
 */
 
 func main() {
