@@ -2,13 +2,20 @@ package main
 
 import "fmt"
 
+/*
+面试题 16.25. LRU 缓存
+https://leetcode.cn/problems/OrIXps/description/
+链表法 很慢
+*/
+
 func main() {
-	test := Constructor(1)
+	test := Constructor(2)
 	test.Put(2, 1)
+	test.Put(1, 1)
+	test.Put(2, 3)
+	test.Put(4, 1)
+	fmt.Println(test.Get(1))
 	fmt.Println(test.Get(2))
-	test.Put(3, 2)
-	fmt.Println(test.Get(2))
-	fmt.Println(test.Get(3))
 }
 
 type LRUCache struct {
@@ -74,6 +81,34 @@ func (this *LRUCache) Get(key int) int {
 
 // 插入
 func (this *LRUCache) Put(key int, value int) {
+	n1 := this.head
+	for n1 != nil {
+		if n1.key == key {
+			// 删除
+			n1.prev.next = n1.next
+			if n1.next != nil {
+				n1.next.prev = n1.prev
+			}
+			if this.tail == n1 {
+				this.tail = n1.prev
+			}
+			// 插入
+			n1.next = this.head.next
+			n1.prev = this.head
+			if this.head.next != nil {
+				this.head.next.prev = n1
+			}
+			this.head.next = n1
+			n1.value = value
+
+			if n1.next == nil {
+				this.tail = n1
+			}
+			return
+		}
+		n1 = n1.next
+	}
+
 	node := &Node{
 		key:   key,
 		value: value,
