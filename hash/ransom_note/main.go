@@ -1,10 +1,8 @@
 package main
 
-func main() {
-
-}
-
 /*
+383.赎罪信
+
 字典法 创建一个map
 发现将 ransomNote 的每个字符往里面写
 出现一次就是 dic[a] = 1
