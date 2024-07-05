@@ -6,6 +6,9 @@ import "fmt"
 // 下一页就是入栈，上一页就是出栈
 // 返回 出栈的内容 同时放入另一个栈内
 
+// 这里有个问题，我自己推的结果和 leetcode给的结果不同
+// 是因为  visit 我理解错了吗
+
 func main() {
 	bro := Constructor("leetcode.com")
 	bro.Visit("google.com")
