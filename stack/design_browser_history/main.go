@@ -16,7 +16,7 @@ func main() {
 	bro.Visit("youtube.com")
 	fmt.Println(bro.Back(1))
 	fmt.Println(bro.Back(1))
-	fmt.Println(bro.Back(1))
+	fmt.Println(bro.Forward(1))
 	bro.Visit("linkedin.com")
 	fmt.Println(bro.Forward(2))
 	fmt.Println(bro.Back(2))
@@ -53,14 +53,15 @@ func (this *BrowserHistory) Back(steps int) string {
 		return this.url
 	}
 	if steps >= len(this.curLst) {
-		steps = len(this.curLst) // step = 0
+		steps = len(this.curLst)
 	}
 
-	tmpList := this.curLst[len(this.curLst)-steps:]    //  [1-0=1:]
-	this.curLst = this.curLst[:len(this.curLst)-steps] // [:1-0=0]
+	tmpList := this.curLst[len(this.curLst)-steps:]
+	this.curLst = this.curLst[:len(this.curLst)-steps]
+	// 反过来 不能正则拿
 	for i := range tmpList {
 		this.preLst = append(this.preLst, this.url)
-		this.url = tmpList[i]
+		this.url = tmpList[len(tmpList)-1-i]
 	}
 	return this.url
 }
@@ -76,7 +77,7 @@ func (this *BrowserHistory) Forward(steps int) string {
 	this.preLst = this.preLst[:len(this.preLst)-steps]
 	for i := range tmpList {
 		this.curLst = append(this.curLst, this.url)
-		this.url = tmpList[i]
+		this.url = tmpList[len(tmpList)-1-i]
 	}
 	return this.url
 }
