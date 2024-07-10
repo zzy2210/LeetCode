@@ -1,5 +1,6 @@
 package main
 
+// 242. 有效的字母异位词
 func isAnagram(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
