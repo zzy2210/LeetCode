@@ -2,6 +2,7 @@ package main
 
 import "sort"
 
+// 49. 字母异位词分组
 // map 的 k-v k是 某个单词排序后的结果，v放它本来的内容
 // 排完之后 直接把每个 v 给 append 进去就完事
 
