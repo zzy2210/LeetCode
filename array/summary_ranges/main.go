@@ -2,6 +2,7 @@ package summaryranges
 
 import "fmt"
 
+// 228. 汇总区间
 // 题目上来就是已经排序了，并且互不相同
 // 直接遍历就好，如果 i +1 ！= a[i+1] 那就说明这一节到它结束
 func SummaryRanges(nums []int) []string {
