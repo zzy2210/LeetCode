@@ -1,4 +1,4 @@
-package main
+package isomorphicstrings
 
 //205. 同构字符串
 

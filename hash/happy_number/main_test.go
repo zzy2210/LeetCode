@@ -1,6 +1,9 @@
-package main
+package happynumber_test
 
-import "testing"
+import (
+	happynumber "leetcode/hash/happy_number"
+	"testing"
+)
 
 func TestStep(t *testing.T) {
 	testCases := []struct {
@@ -18,7 +21,7 @@ func TestStep(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := step(tc.input)
+			result := happynumber.Step(tc.input)
 			if result != tc.expected {
 				t.Errorf("step(%d) = %d; want %d", tc.input, result, tc.expected)
 			}

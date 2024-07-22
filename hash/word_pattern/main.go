@@ -1,4 +1,4 @@
-package main
+package wordpattern
 
 import (
 	"strings"

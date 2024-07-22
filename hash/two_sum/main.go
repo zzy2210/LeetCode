@@ -1,4 +1,4 @@
-package main
+package twosum
 
 // 1. 两数之和
 // 传统 n^2 的解法

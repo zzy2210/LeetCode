@@ -1,6 +1,7 @@
-package main
+package longestconsecutivesequence_test
 
 import (
+	longestconsecutivesequence "leetcode/hash/longest_consecutive_sequence"
 	"testing"
 )
 
@@ -15,7 +16,7 @@ func TestLongestConsecutive(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run("", func(t *testing.T) {
-			got := longestConsecutive(tc.nums)
+			got := longestconsecutivesequence.LongestConsecutive(tc.nums)
 			if got != tc.want {
 				t.Errorf("got %v, want %v", got, tc.want)
 			}

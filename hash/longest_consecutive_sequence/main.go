@@ -1,6 +1,6 @@
-package main
+package longestconsecutivesequence
 
-func longestConsecutive(nums []int) int {
+func LongestConsecutive(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
