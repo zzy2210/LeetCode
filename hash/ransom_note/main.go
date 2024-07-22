@@ -1,4 +1,4 @@
-package main
+package ransomnote
 
 /*
 383.赎罪信
