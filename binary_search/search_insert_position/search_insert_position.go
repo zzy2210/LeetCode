@@ -8,17 +8,17 @@ package searchinsertposition
 先二分，二到最后没用的话就返回 左右
 */
 func searchInsert(nums []int, target int) int {
-	n := len(nums)
-	i, j := 0, n-1
-	ans := n
-	for i < j {
-		mid := i + j/2
-		if target >= nums[mid] {
-			ans = mid
-			i = mid + 1
+	l, r := 0, len(nums)-1
+	for l <= r {
+		mid := l + (r-1)/2
+		if nums[mid] == target {
+			return mid
+		} else if nums[mid] > target {
+			r = mid - 1
 		} else {
-			j = mid
+			l = mid + 1
 		}
 	}
-	return ans
+
+	return r + 1
 }

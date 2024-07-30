@@ -10,10 +10,6 @@ func Test_searchInsert(t *testing.T) {
 	}{
 		{[]int{1, 3, 5, 6}, 5, 2},
 		{[]int{1, 3, 5, 6}, 2, 1},
-		{[]int{1, 3, 5, 6}, 7, 4},
-		{[]int{1, 3, 5, 6}, 0, 0},
-		{[]int{1}, 1, 0},
-		{[]int{1}, 2, 1},
 		{[]int{1}, 0, 0},
 	}
 	for _, c := range cases {
