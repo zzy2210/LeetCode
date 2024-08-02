@@ -29,11 +29,11 @@ func copyRandomList(head *Node) *Node {
 		return nil
 	}
 	// 跨两步，第一步是拷贝节点
-	for node := head.Next; node != nil; node = node.Next.Next {
+	for node := head; node != nil; node = node.Next.Next {
 		node.Next = &Node{Val: node.Val, Next: node.Next}
 	}
 
-	for node := head.Next; node != nil; node = node.Next.Next {
+	for node := head; node != nil; node = node.Next.Next {
 		if node.Random != nil {
 			node.Next.Random = node.Random.Next
 		}
