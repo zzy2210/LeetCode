@@ -35,7 +35,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		}
 		sum := v1 + v2 + carry
 		// 1x /10 = 1  x / 10 = 0 通过数学判断 carry > 10 ?
-		carry = carry / 10
+		carry = sum / 10
 		sum = sum % 10
 		result.Next = &ListNode{Val: sum}
 		result = result.Next
